@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::group(['namespace' => 'Site'], function(){
     Route::resource('schedules', 'ScheduleController');
 });

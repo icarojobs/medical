@@ -7,6 +7,7 @@ use App\Models\Patient;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use UxWeb\SweetAlert\SweetAlert;
 
 class ScheduleController extends Controller
 {
@@ -38,7 +39,31 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        dd('SAVE', $request->all() );
+        $patient = Patient::where('document', $request->document)->first();
+
+
+        if($patient){
+            $schedule = Schedule::updateOrCreate([
+                'scheduled_date' => $request->scheduled_date,
+                'patient_id' => $patient->id,
+                'doctor_id' => $request->doctor_id
+            ]);
+        }
+
+        if(!$patient)
+        {
+            alert()->error('O seu documento não foi encontrado. Por favor, solicite o seu cadastro', 'Erro de Cadastro')->persistent();
+            return redirect()->back()->withInput();
+        }
+
+        if($patient && $schedule)
+        {
+            alert()->success('Agenda cadastrada! Aguarde a confirmação.', 'Agendamento')->persistent();
+            return redirect('/');
+        }
+
+        alert()->error('Erro ao realizar agendamento. Preencha os campos corretamente ou solicite o seu cadastro.', 'Agendamento')->persistent();
+        return redirect()->back()->withInput();
     }
 
     /**

@@ -3,8 +3,8 @@
 // Frontend Routes
 Route::group(['namespace' => 'Site'], function(){
     Route::get('/', 'FrontendController@index');
+    Route::post('save-schedule', 'FrontendController@saveSchedule');
 });
-
 
 
 // Backend Routes
