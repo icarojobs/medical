@@ -14,5 +14,6 @@ use Illuminate\Http\Request;
 */
 Route::group(['namespace' => 'Site'], function(){
     Route::resource('schedules', 'ScheduleController');
+    Route::resource('doctors', 'DoctorController');
 });
 
