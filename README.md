@@ -6,5 +6,5 @@ MedCal, a melhor forma de organizar a sua agenda médica.
 ## Schedule API
 /api/schedules/{document}
 
-## Doctur API
+## Doctor API
 /api/doctors
