@@ -1,7 +1,7 @@
 <?php
 
 // Underconstruction Route (require password to access)
-Route::group(['middleware' => 'under-construction'], function () {
+//Route::group(['middleware' => 'under-construction'], function () {
 
     // Frontend Routes
     Route::group(['namespace' => 'Site'], function(){
@@ -19,7 +19,7 @@ Route::group(['middleware' => 'under-construction'], function () {
         CRUD::resource('schedule', 'ScheduleCrudController');
     });
 
-});
+//});
 
 
 
