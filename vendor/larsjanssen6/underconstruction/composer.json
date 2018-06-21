@@ -1,0 +1,43 @@
+{
+    "name": "larsjanssen6/underconstruction",
+    "license": "MIT",
+    "homepage": "https://github.com/larsjanssen6/underconstruction",
+    "authors": [
+        {
+            "name": "Lars Janssen",
+            "email": "mail@larsjanssen.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "^7.0",
+        "illuminate/support": "~5.5.0|~5.5.5|~5.6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.5.3|~3.6.0",
+        "phpunit/phpunit": "^6.3|^7.0",
+        "mockery/mockery": "^1.0@dev",
+        "symfony/thanks": "^1.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LarsJanssen\\UnderConstruction\\Test\\": "tests"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "LarsJanssen\\UnderConstruction\\": "src/"
+        }
+    },
+    "minimum-stability":"dev",
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LarsJanssen\\UnderConstruction\\UnderConstructionServiceProvider"
+            ]
+        }
+    }
+}

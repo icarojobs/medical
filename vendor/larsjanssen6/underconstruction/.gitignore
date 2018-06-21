@@ -1,0 +1,9 @@
+node_modules
+vendor
+.idea
+npm-debug.log
+*.txt
+composer.lock
+package-lock.json
+mix-manifest.json
+.DS_Store
