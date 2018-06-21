@@ -20,8 +20,14 @@ O sistema MediCal foi desenvolvido para gerenciar, de forma fácil, o agendament
 ## Schedule API
 /api/schedules/{document}
 
+*OBS: Para acessar a API em hospedagem compartilhada, sem configuração de .htaccess, é necessário acessar utilizando diretório /public, por exemplo:*
+*http://mob2you.com.br/medical/public/api/doctors*
+
 ## Doctor API
 /api/doctors
+
+*OBS: Para acessar a API em hospedagem compartilhada, sem configuração de .htaccess, é necessário acessar utilizando diretório /public, por exemplo:*
+*http://mob2you.com.br/medical/public/api/schedules/32222222222*
 
 ## Responsável
 
