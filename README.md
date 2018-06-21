@@ -8,3 +8,6 @@ MedCal, a melhor forma de organizar a sua agenda médica.
 
 ## Doctor API
 /api/doctors
+
+## Password to access (underconstruction)
+1122

@@ -13466,6 +13466,18 @@ a.text-dark:focus {
   }
 }
 
+.select2-container .select2-selection--single {
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  cursor: pointer !important;
+  display: block !important;
+  height: 36px !important;
+  -moz-user-select: none !important;
+   -ms-user-select: none !important;
+       user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
