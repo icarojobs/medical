@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Resources\ScheduleResource;
+use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use UxWeb\SweetAlert\SweetAlert;
 
 class ScheduleController extends Controller
 {
@@ -74,10 +74,17 @@ class ScheduleController extends Controller
      */
     public function show($document)
     {
-        $patient = Patient::where('document', $document)->firstOrFail();
-        $schedule = Schedule::where('patient_id', $patient->id)->get();
+        $patient = Patient::where('document', $document)->first();
 
-        return new ScheduleResource($schedule);
+        if(!$patient)
+        {
+            alert()->error('O seu documento não foi encontrado. Por favor, solicite o seu cadastro', 'Erro de Cadastro')->persistent();
+            return redirect()->back()->withInput();
+        }
+
+        $schedules = Schedule::where('patient_id', $patient->id)->get();
+
+        return new ScheduleResource($schedules);
     }
 
     /**
@@ -112,5 +119,21 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // Specific Method
+    public function get($document)
+    {
+        $patient = Patient::where('document', $document)->first();
+
+        if(!$patient)
+        {
+            alert()->error('O seu documento não foi encontrado. Por favor, solicite o seu cadastro', 'Erro de Cadastro')->persistent();
+            return redirect()->back()->withInput();
+        }
+
+        $schedules = Schedule::where('patient_id', $patient->id)->get();
+        $doctors = Doctor::all();
+        return view('pages.index', compact('schedules', 'doctors'));
     }
 }

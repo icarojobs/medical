@@ -4,6 +4,7 @@
 Route::group(['namespace' => 'Site'], function(){
     Route::get('/', 'FrontendController@index');
     Route::post('save-schedule', 'FrontendController@saveSchedule');
+    Route::post('get-schedules', 'FrontendController@getSchedules');
 });
 
 
@@ -15,3 +16,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admi
     CRUD::resource('doctor', 'DoctorCrudController');
     CRUD::resource('schedule', 'ScheduleCrudController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -34,7 +34,7 @@
     <header>
         <div class="navbar navbar-dark bg-dark box-shadow">
             <div class="container d-flex justify-content-between">
-                <a href="#" class="navbar-brand d-flex align-items-center">
+                <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
                     <i class="fa fa-medkit"></i> &nbsp;<strong> {{ config('app.name') }}</strong>
                 </a>
 
@@ -48,11 +48,6 @@
             <div class="container">
                 <h1 class="jumbotron-heading">O que deseja fazer?</h1>
                 <p class="lead text-muted">Através do sistema MediCal é possivel realizar e consultar agendamentos.</p>
-
-                <p>
-                    <button class="btn btn-primary my-2">Ver meus agendamentos</button>
-                    <button class="btn btn-secondary my-2">Agendar horário com Dr.</button>
-                </p>
 
                 <small>Caso não consiga realizar um novo agendamento, solicite o seu cadastro com um de nossos atendentes.</small>
             </div>
@@ -71,9 +66,10 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <form class="form-inline" id="form_list_schedule">
+                                    <form class="form-group" action="{{ url('get-schedules') }}" method="post">
+                                        @csrf
                                         <div class="form-group mb-2 mr-2">
-                                            <input type="search" class="form-control" placeholder="RG ou CPF">
+                                            <input name="document" type="search" class="form-control" placeholder="RG ou CPF" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary mb-2">Ver agenda</button>
                                     </form>
@@ -84,28 +80,40 @@
                                 </div>
 
                                 <div class="col-md-12 table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Data Agendamthto</th>
-                                            <th scope="col">Horário</th>
-                                            <th scope="col">Doutor</th>
-                                            <th scope="col">Confirmado?</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+
+                                    @if($schedules)
+
+                                        @if($schedules->isEmpty())
+                                            <p class="text-info">Documento encontrado, mas não existe nenhum agendamento para você.</p>
+                                        @else
+                                            <table class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Data Agendamthto</th>
+                                                    <th scope="col">Horário</th>
+                                                    <th scope="col">Doutor</th>
+                                                    <th scope="col">Confirmado?</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
 
 
-                                        <tr>
-                                            <th scope="row">08/02/2018</th>
-                                            <td>05:00</td>
-                                            <td>Dr. Pasquali</td>
-                                            <td>Não<td>
-                                        </tr>
+                                                @foreach($schedules as $schedule)
+                                                    <tr>
+                                                        <th scope="row">{{ $schedule->scheduled_date }}</th>
+                                                        <td>{{ $schedule->scheduled_date }}</td>
+                                                        <td>{{ $schedule->doctor->name }}</td>
+                                                        <td>{{ $schedule->is_confirmed == 0 ? 'Não' : 'Sim' }}<td>
+                                                    </tr>
+                                                @endforeach
 
+                                                </tbody>
+                                            </table>
+                                        @endif
+                                    @else
+                                        <p>Informe o seu RG ou CPF para visualizar os seus agendamentos.</p>
+                                    @endif
 
-                                        </tbody>
-                                    </table>
                                 </div>
 
 
@@ -165,7 +173,7 @@
     <footer class="text-muted badge-dark py-4">
         <div class="container">
             <p>MediCal &copy; has developed by <a href="https://github.com/icarojobs" target="_blank">Icaro Jobs</a></p>
-            <p>Repository: <a href="https://github.com/icarojobs/medical" target="_blank">Github</a> </p>
+            <p>Repository: <a href="https://github.com/icarojobs/medical" target="_blank">Github</a>  | <a href="{{ url('admin') }}">Área Administrativa</a> </p>
         </div>
     </footer>
 
