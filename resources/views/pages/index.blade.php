@@ -47,7 +47,7 @@
         <section class="jumbotron text-center">
             <div class="container">
                 <h1 class="jumbotron-heading">O que deseja fazer?</h1>
-                <p class="lead text-muted">Através do sistema MediCal é possivel realizar e consultar agendamentos.</p>
+                <p class="lead text-muted">Através do sistema da MediCal é possivel visualizar e solicitar agendamentos médico</p>
 
                 <small>Caso não consiga realizar um novo agendamento, solicite o seu cadastro com um de nossos atendentes.</small>
             </div>
