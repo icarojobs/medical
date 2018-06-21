@@ -124,12 +124,12 @@ class ScheduleController extends Controller
     // Specific Method
     public function get($document)
     {
-        $patient = Patient::where('document', $document)->first();
+        $patient = Patient::where('document', $document)->first() ?? null;
 
-        if(!$patient)
+        if( !$patient)
         {
             alert()->error('O seu documento não foi encontrado. Por favor, solicite o seu cadastro', 'Erro de Cadastro')->persistent();
-            return redirect()->back()->withInput();
+            return redirect('/')->withInput();
         }
 
         $schedules = Schedule::where('patient_id', $patient->id)->get();

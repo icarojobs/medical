@@ -24,7 +24,6 @@ class FrontendController extends Controller
     public function getSchedules(Request $request)
     {
         $schedule = new ScheduleController;
-
         return $schedule->get($request->document);
     }
 }

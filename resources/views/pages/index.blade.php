@@ -100,8 +100,8 @@
 
                                                 @foreach($schedules as $schedule)
                                                     <tr>
-                                                        <th scope="row">{{ $schedule->scheduled_date }}</th>
-                                                        <td>{{ $schedule->scheduled_date }}</td>
+                                                        <th scope="row">{{ date('d/m/Y', strtotime($schedule->scheduled_date)) }}</th>
+                                                        <td>{{ date('H:i', strtotime($schedule->scheduled_date)) }}</td>
                                                         <td>{{ $schedule->doctor->name }}</td>
                                                         <td>{{ $schedule->is_confirmed == 0 ? 'Não' : 'Sim' }}<td>
                                                     </tr>
