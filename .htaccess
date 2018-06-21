@@ -1,1 +1,3 @@
+AddHandler application/x-httpd-php71 .php
+
 Options -Indexes
