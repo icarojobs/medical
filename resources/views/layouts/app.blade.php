@@ -25,7 +25,7 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
     @include('includes.scripts.select2')
-    @include('includes.scripts.select2')
+    @include('includes.scripts.sweetalert')
     @include('includes.scripts.datatables')
 
 </body>

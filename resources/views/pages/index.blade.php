@@ -94,7 +94,7 @@
                             <div class="card-body">
 
                                 <div class="col-md-8">
-                                    <h2>Novo Agendamento</h2>
+                                    <h2>Solicitação de Agendamento</h2>
                                 </div>
 
                                 <div class="col-md-12">
