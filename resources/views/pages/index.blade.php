@@ -21,7 +21,7 @@
                 box-sizing: border-box;
                 cursor: pointer;
                 display: block;
-                height: 34px;
+                height: 36px;
                 user-select: none;
                 -webkit-user-select: none;
 
